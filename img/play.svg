@@ -1,0 +1,11 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="25" height="25">
+  <!-- Circular background -->
+  <circle cx="12.5" cy="12.5" r="11.25" fill="#1fdf60" />
+  <!-- Play icon -->
+  <path 
+    d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z" 
+    fill="black" 
+    transform="translate(12.5, 12.5) scale(0.01, -0.01) translate(-480, 480)" />
+</svg>
+

@@ -1,0 +1,63 @@
+.border{
+    border: 2px solid red;
+   
+}
+.flex{
+    display: flex;
+    justify-content: center;
+}
+.item{
+    align-items: center;
+}
+.bg-black{
+    background-color: black;
+    color: white;
+}
+.bg-gray{
+    background-color: #121212;
+}
+.bd-radius{
+    border-radius:7px;
+}
+.m-1{
+    margin: 7px;
+}
+.p-1{
+    padding:10px;
+}
+/* Style for the vertical scrollbar */
+::-webkit-scrollbar {
+    width:8px; /* Set the width of the scrollbar */
+  }
+  
+  /* Style for the track (background of the scrollbar) */
+  ::-webkit-scrollbar-track {
+    background: #2f2f2f; /* Dark background color */
+    border-radius: 10px; /* Optional: rounded corners */
+  }
+  
+  /* Style for the thumb (scrollbar handle) */
+  ::-webkit-scrollbar-thumb {
+    background: #555; /* Dark color for the thumb */
+    border-radius: 10px; /* Optional: rounded corners */
+  }
+  
+  /* Style for the thumb when hovered */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Lighter color on hover */
+  }
+  .pointer{
+    cursor: pointer;
+  }
+
+
+  /* volume bar */
+  /* General styling for the container */
+
+
+/* Styling the range input */
+ .range input[type="range"] {
+
+  height:4px;
+ 
+}
