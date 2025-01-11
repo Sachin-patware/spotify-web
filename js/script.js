@@ -89,7 +89,7 @@ async function main() {
   // display all folders
 
   async function displayalbums() {
-    let a = await fetch("song/");
+    let a = await fetch("/song/");
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -102,7 +102,7 @@ async function main() {
         console.log(folder);
 
         // get the meta deta of the folder
-        let b = await fetch(`song/${folder}/info.json`);
+        let b = await fetch(`/song/${folder}/info.json`);
         let response = await b.json();
 
         let cardContainer = document.querySelector(".cardContainer");
@@ -110,7 +110,7 @@ async function main() {
           cardContainer.innerHTML +
           `
             <div data-folder="${folder}" class="card bd-radius">
-              <img src="song/${folder}/coverimg.jpeg" alt="happy hits " />
+              <img src="/song/${folder}/coverimg.jpeg" alt="happy hits " />
               <div class="play">
                 <img src="img/play.svg" alt="playbutton"/>
           </div>
