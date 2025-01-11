@@ -6,7 +6,7 @@ var currentsong = new Audio();
 
 async function playsong(track, pause = false) {
   try {
-    currentsong.src = `${currfolder}` + track;
+    currentsong.src = currfolder + track;
     if (!pause) {
       await currentsong.play(); // Attempt to play audio
       play.src = "img/pause.svg";
@@ -22,7 +22,7 @@ async function playsong(track, pause = false) {
 
 async function getsongs(folder) {
   currfolder = folder;
-  let a = await fetch(`${folder}`);
+  let a = await fetch(folder);
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -89,7 +89,7 @@ async function main() {
   // display all folders
 
   async function displayalbums() {
-    let a = await fetch("/song/");
+    let a = await fetch("./song/");
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -102,7 +102,7 @@ async function main() {
         console.log(folder);
 
         // get the meta deta of the folder
-        let b = await fetch(`/song/${folder}/info.json`);
+        let b = await fetch(`song/${folder}/info.json`);
         let response = await b.json();
 
         let cardContainer = document.querySelector(".cardContainer");
