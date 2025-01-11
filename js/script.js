@@ -89,7 +89,7 @@ async function main() {
   // display all folders
 
   async function displayalbums() {
-    let a = await fetch("song/");
+    let a = await fetch("https://github.com/Sachin-patware/spotify-web/tree/main/song/");
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -102,7 +102,7 @@ async function main() {
         console.log(folder);
 
         // get the meta deta of the folder
-        let b = await fetch(`song/${folder}/info.json`);
+        let b = await fetch(`https://github.com/Sachin-patware/spotify-web/tree/main/song/${folder}/info.json`);
         let response = await b.json();
 
         let cardContainer = document.querySelector(".cardContainer");
@@ -121,10 +121,11 @@ async function main() {
     }
 
     // load the playlist whenever card is clicked
+    
     card = document.getElementsByClassName("card");
     Array.from(card).forEach((e) => {
       e.addEventListener("click", async (item) => {
-        await getsongs(`/song/${item.currentTarget.dataset.folder}/`);
+        await getsongs(`https://github.com/Sachin-patware/spotify-web/tree/main/song/${item.currentTarget.dataset.folder}/`);
         playsong(songs[0][0], true);
       });
     });
@@ -133,7 +134,7 @@ async function main() {
   displayalbums();
 
   // list of all songs in first folder
-  await getsongs("/song/all/");
+  await getsongs("https://github.com/Sachin-patware/spotify-web/tree/main//song/all/");
   playsong(songs[0][0], true);
 
   // add event listener to play,
