@@ -93,7 +93,7 @@ async function main() {
         cardContainer.innerHTML +
         `
             <div data-folder="${folder}" class="card bd-radius">
-              <img src="/song/${folder}/coverimg.jpeg" alt="happy hits " />
+              <img src="song/${folder}/coverimg.jpeg" alt="happy hits " />
               <div class="play">
                 <img src="img/play.svg" alt="playbutton"/>
           </div>
