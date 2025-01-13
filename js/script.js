@@ -78,7 +78,7 @@ async function main() {
   // display all folders
 
   async function displayalbums() {
-    let a = await fetch("./song/index.json");
+    let a = await fetch("song/index.json");
     let resp = await a.json();
     for (let i = 0; i < resp.length; i++) {
       let folder = resp[i].name;
@@ -106,7 +106,7 @@ async function main() {
     card = document.getElementsByClassName("card");
     Array.from(card).forEach((e) => {
       e.addEventListener("click", async (item) => {
-        await getsongs(`/song/${item.currentTarget.dataset.folder}/`);
+        await getsongs(`song/${item.currentTarget.dataset.folder}/`);
         playsong(songs[0][0], true);
       });
     });
@@ -115,7 +115,7 @@ async function main() {
   displayalbums();
 
   // list of all songs in first folder
-  await getsongs("/song/all/");
+  await getsongs("song/all/");
   playsong(songs[0][0], true);
 
   // add event listener to play,
