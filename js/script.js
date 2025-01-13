@@ -22,31 +22,20 @@ async function playsong(track, pause = false) {
 
 async function getsongs(folder) {
   currfolder = folder;
-  let a = await fetch(folder);
-  let response = await a.text();
-  let div = document.createElement("div");
-  div.innerHTML = response;
-  let As = div.getElementsByTagName("a");
+  let a = await fetch(`${folder}/index.json`);
+  let response = await a.json();
 
   // Arrays to store song details and URLs
   const songNames = [];
   const artists = [];
   const urls = [];
   songs = [urls, songNames, artists];
-  for (let i = 0; i < As.length; i++) {
-    const element = As[i];
+  console.log(songs);
 
-    const path = new URL(element).pathname;
-    if (path.startsWith(`${folder}`) && path.includes(".mp3")) {
-      const songDetails = decodeURIComponent(path.replace(`${folder}`, "")); // Decode URL and remove "/song/"
-      const fileName = songDetails.replace(".mp3", ""); // Remove file extension
-      const [songName, artist] = fileName.split(" - "); // Split into song name and artist
-
-      // Store in respective arrays
-      songNames.push(songName);
-      artists.push(artist);
-      urls.push(songDetails); // Store the relative URL (after /song)
-    }
+  for (let i = 0; i < response.length; i++) {
+    songNames.push(response[i].name);
+    artists.push(response[i].artist);
+    urls.push(response[i].url); // Store the relative URL (after /song)
   }
 
   // return alldetail;
@@ -89,26 +78,20 @@ async function main() {
   // display all folders
 
   async function displayalbums() {
-    let a = await fetch("./song/");
-    let response = await a.text();
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    let anchors = div.getElementsByTagName("a");
-    let arr = Array.from(anchors);
-    for (let i = 0; i < arr.length; i++) {
-      const e = arr[i];
-      if (e.href.includes("song/")) {
-        let folder = e.href.split("/").splice(-1)[0];
-        console.log(folder);
+    let a = await fetch("./song/index.json");
+    let resp = await a.json();
+    for (let i = 0; i < resp.length; i++) {
+      let folder = resp[i].name;
+      console.log(folder);
 
-        // get the meta deta of the folder
-        let b = await fetch(`song/${folder}/info.json`);
-        let response = await b.json();
+      // get the meta deta of the folder
+      let b = await fetch(`song/${folder}/info.json`);
+      let response = await b.json();
 
-        let cardContainer = document.querySelector(".cardContainer");
-        cardContainer.innerHTML =
-          cardContainer.innerHTML +
-          `
+      let cardContainer = document.querySelector(".cardContainer");
+      cardContainer.innerHTML =
+        cardContainer.innerHTML +
+        `
             <div data-folder="${folder}" class="card bd-radius">
               <img src="/song/${folder}/coverimg.jpeg" alt="happy hits " />
               <div class="play">
@@ -117,7 +100,6 @@ async function main() {
               <h2> ${response.title}</h2>
               <p> ${response.description}</p>
             </div>`;
-      }
     }
 
     // load the playlist whenever card is clicked
