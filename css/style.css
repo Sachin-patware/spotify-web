@@ -6,6 +6,8 @@
     font-family: "Roboto", serif;
     font-weight: 700;
     font-style: normal;
+    user-select: none;
+    cursor:default;
 }
 
 body {

@@ -49,7 +49,7 @@ async function getsongs(folder) {
   for (let i = 0; i < songs[0].length; i++) {
     songname.innerHTML =
       songname.innerHTML +
-      `<li> <img src="img/music.svg" alt="">
+      `<li data-folder="${songs[1][i]}" class="pointer" >  <img src="img/music.svg" alt="">
               <div class="info">
                 <p class="name">${songs[1][i]}</p>
                 <p class="artist">${songs[2][i]}</p>
@@ -62,13 +62,16 @@ async function getsongs(folder) {
   // attach an event listner to each song
   let li = document.querySelector(".songlist").getElementsByTagName("li");
   Array.from(li).forEach((e) => {
-    e.addEventListener("click", async (a) => {
-      songname = e.querySelector(".info").firstElementChild.innerHTML;
-      console.log(songname);
-      for (let i = 0; i < songs[0].length; i++) {
-        let index = songs[1].indexOf(a.currentTarget.dataset.folder);
-        console.log(index);
+    e.addEventListener("click", (a) => {
+      
+      
+      for (let i = 0; i < songs[1].length; i++) {
+      
+       let  index= songs[1].indexOf(a.currentTarget.dataset.folder)
+       console.log(index);
+
         playsong(songs[0][index]);
+        
       }
     });
   });
