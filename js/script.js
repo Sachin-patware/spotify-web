@@ -62,13 +62,13 @@ async function getsongs(folder) {
   // attach an event listner to each song
   let li = document.querySelector(".songlist").getElementsByTagName("li");
   Array.from(li).forEach((e) => {
-    e.addEventListener("click", async () => {
+    e.addEventListener("click", async (a) => {
       songname = e.querySelector(".info").firstElementChild.innerHTML;
+      console.log(songname);
       for (let i = 0; i < songs[0].length; i++) {
-        let url = songs[0][i];
-        if (url.split(" - ")[0] === songname) {
-          playsong(url);
-        }
+        let index = songs[1].indexOf(a.currentTarget.dataset.folder);
+        console.log(index);
+        playsong(songs[0][index]);
       }
     });
   });
